@@ -1,0 +1,31 @@
+buildscript {
+    ext {
+        kotlin_version = '1.5.30'
+    }
+
+    repositories {
+
+        google()
+        mavenCentral()
+    }
+
+    dependencies {
+        classpath 'com.android.tools.build:gradle:3.6.4'
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+    }
+}
+
+allprojects {
+    repositories {
+        google()
+        mavenCentral()
+        maven{
+            allowInsecureProtocol = true
+            url"http://172.20.4.71:8081/nexus/content/repositories/releases/"
+        }
+    }
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}
